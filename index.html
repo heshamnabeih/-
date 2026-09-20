@@ -53,23 +53,12 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        @keyframes pulse-glow {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(79, 70, 229, 0); }
-        }
-        @keyframes robot-blink {
-            0%, 90%, 100% { transform: scaleY(1); }
-            95% { transform: scaleY(0.1); }
-        }
         .animated-logo {
             animation: float 3.5s ease-in-out infinite;
             filter: drop-shadow(0 4px 12px rgba(30, 58, 138, 0.15));
         }
         .rotating-bg-logo {
             animation: slow-spin 30s linear infinite;
-        }
-        .robot-eyes {
-            animation: robot-blink 4s infinite;
         }
         @media print {
             body * {
@@ -96,16 +85,25 @@
 
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-30 relative overflow-hidden">
         <div class="absolute -right-12 -top-12 w-48 h-48 opacity-20 pointer-events-none rotating-bg-logo flex items-center justify-center">
-            <img src="BLA-Logo No Background_4.png" alt="Background Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/200x200/1d4ed8/ffffff?text=BLA'">
+            <img id="bg-rotating-img" src="BLA-Logo No Background_5.png" alt="Background Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/200x200/1d4ed8/ffffff?text=BLA'">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between relative z-10">
             
             <div class="flex items-center space-x-5 space-x-reverse rtl:space-x-reverse flex-wrap">
                 <div class="flex items-center space-x-4 space-x-reverse rtl:space-x-reverse text-right rtl:text-right ltr:text-left">
-                    <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-2 animated-logo flex-shrink-0 overflow-hidden relative">
-                        <img src="BLA-Logo No Background_4.png" alt="BLA Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/1d4ed8/ffffff?text=BLA'">
+                    
+                    <!-- Academy Logo with direct upload button -->
+                    <div class="relative group">
+                        <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-2 animated-logo flex-shrink-0 overflow-hidden relative">
+                            <img id="header-academy-logo" src="BLA-Logo No Background_5.png" alt="BLA Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/1d4ed8/ffffff?text=BLA'">
+                        </div>
+                        <label title="رفع وتغيير شعار الأكاديمية" class="absolute -bottom-1 -right-1 bg-indigo-600 hover:bg-indigo-700 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] cursor-pointer shadow-md transition-all">
+                            <i class="fa-solid fa-camera"></i>
+                            <input type="file" id="header-logo-input" accept="image/*" class="hidden" onchange="handleAcademyLogoUpload(event)">
+                        </label>
                     </div>
+
                     <div>
                         <h1 id="txt-brand-title" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">منصة اكاديمية بحرة للتعليم BLA</h1>
                         <p id="txt-brand-subtitle" class="text-xs text-slate-500 font-medium">Bahra Learning Academy - إدارة الدورات وتقييم ما بعد التدريب</p>
@@ -215,14 +213,20 @@
                     </div>
                 </div>
 
-                <!-- Custom Logo Box (Ignite) -->
-                <div class="bg-white rounded-2xl p-3 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-1.5">
-                    <div class="w-20 h-20 rounded-xl bg-slate-50 border border-slate-100 p-1.5 flex items-center justify-center animated-logo overflow-hidden">
-                        <img id="sidebar-custom-logo" src="Ignite Logo Design.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
+                <!-- Partner Ignite Logo (Larger Size: w-32 h-32) with direct upload button -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-2 relative group">
+                    <div class="w-32 h-32 rounded-xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center animated-logo overflow-hidden relative">
+                        <img id="sidebar-custom-logo" src="Ignite Logo Design_2.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
                     </div>
-                    <div>
-                        <h4 class="text-[11px] font-black text-slate-900">شريك النجاح</h4>
-                        <p class="text-[9px] text-slate-400">شعار إضافي معتمد</p>
+                    <div class="flex items-center justify-between w-full px-1">
+                        <div>
+                            <h4 class="text-xs font-black text-slate-900 text-right">شريك النجاح</h4>
+                            <p class="text-[9px] text-slate-400 text-right">شعار إضافي معتمد</p>
+                        </div>
+                        <label title="رفع وتغيير شعار شريك النجاح" class="bg-indigo-600 hover:bg-indigo-700 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs cursor-pointer shadow-md transition-all flex-shrink-0">
+                            <i class="fa-solid fa-camera"></i>
+                            <input type="file" id="partner-logo-input" accept="image/*" class="hidden" onchange="handlePartnerLogoUpload(event)">
+                        </label>
                     </div>
                 </div>
 
@@ -231,7 +235,7 @@
                     <div class="px-3 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
                         <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                             <div class="w-7 h-7 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-xs" id="ai-header-avatar">
-                                😊🤖
+                                👀🤖
                             </div>
                             <div>
                                 <h4 id="ai-header-title" class="font-bold text-xs">مساعد بحرة الذكي</h4>
@@ -267,7 +271,6 @@
                 </div>
             </aside>
 
-            <!-- Main Content Area -->
             <div class="lg:col-span-4 space-y-6 px-1">
                 
                 <!-- Statistics Grid -->
@@ -354,7 +357,7 @@
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-800 text-white">
                 <div>
                     <h3 class="text-lg font-bold">لوحة إدارة المنصة وإضافة المحتوى</h3>
-                    <p class="text-xs text-slate-300">قم بتغيير الشعار الإضافي أو إضافة دورات تدريبية جديدة فوراً من الموقع</p>
+                    <p class="text-xs text-slate-300">قم برفع وتغيير الشعارات أو إضافة دورات تدريبية جديدة فوراً من الموقع</p>
                 </div>
                 <button onclick="closeAdminManagerModal()" class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center transition-all">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -362,15 +365,23 @@
             </div>
             
             <div class="p-6 overflow-y-auto space-y-6 flex-grow text-xs text-slate-700">
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                    <h4 class="font-bold text-slate-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
-                        <i class="fa-solid fa-image text-indigo-600"></i>
-                        <span>تغيير شعار شريك النجاح الإضافي في الشريط الجانبي</span>
-                    </h4>
-                    <p class="text-slate-500">اختر صورة من جهازك لتحديثها فوراً في المنصة.</p>
-                    <div class="flex flex-col sm:flex-row gap-3 items-center">
-                        <input type="file" id="custom-logo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
-                        <button type="button" onclick="handleLogoUpload()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md whitespace-nowrap">رفع وتطبيق الشعار</button>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
+                            <i class="fa-solid fa-image text-indigo-600"></i>
+                            <span>شعار الأكاديمية (الرئيسي)</span>
+                        </h4>
+                        <input type="file" id="admin-academy-logo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-indigo-50 file:text-indigo-700 cursor-pointer">
+                        <button type="button" onclick="handleAdminAcademyLogoUpload()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-sm">تحديث شعار الأكاديمية</button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
+                            <i class="fa-solid fa-image text-indigo-600"></i>
+                            <span>شعار شريك النجاح</span>
+                        </h4>
+                        <input type="file" id="admin-partner-logo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-indigo-50 file:text-indigo-700 cursor-pointer">
+                        <button type="button" onclick="handleAdminPartnerLogoUpload()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-sm">تحديث شريك النجاح</button>
                     </div>
                 </div>
 
@@ -596,7 +607,7 @@ function doGet(e) {
 
                 <div id="printable-certificate" class="bg-white rounded-3xl shadow-xl border-8 border-double border-slate-300 p-8 sm:p-12 text-center relative overflow-hidden mx-auto max-w-3xl">
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-                        <img src="BLA-Logo No Background_4.png" alt="Watermark Logo" class="w-96 h-96 object-contain">
+                        <img id="cert-watermark-img" src="BLA-Logo No Background_5.png" alt="Watermark Logo" class="w-96 h-96 object-contain">
                     </div>
 
                     <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
@@ -604,7 +615,7 @@ function doGet(e) {
 
                     <div class="flex items-center justify-between mb-8 border-b border-slate-200 pb-6 relative z-10">
                         <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-1.5 flex-shrink-0 overflow-hidden">
-                            <img src="BLA-Logo No Background_4.png" alt="Academy Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100/1d4ed8/ffffff?text=BLA'">
+                            <img id="cert-header-img" src="BLA-Logo No Background_5.png" alt="Academy Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/100x100/1d4ed8/ffffff?text=BLA'">
                         </div>
                         <div class="text-center">
                             <h2 class="text-xl font-black text-slate-900 tracking-wider">منصة اكاديمية بحرة للتعليم (BLA)</h2>
@@ -1104,6 +1115,7 @@ function doGet(e) {
         let currentReportTab = 'registrations';
         let currentIdeasTab = 'submit';
         let gasUrl = localStorage.getItem('gas_url') || 'https://script.google.com/macros/s/AKfycbxFnGok3Bacu5q9LaDEWvyT7gRZq4yShJM-PQa8hx9hIZUyjaMD__WzV1NyR_nZK9OA/exec';
+        let academyCustomLogo = localStorage.getItem('academy_custom_logo') || '';
         let customSidebarLogo = localStorage.getItem('custom_sidebar_logo') || '';
 
         const translations = {
@@ -1563,9 +1575,17 @@ function doGet(e) {
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('lang-select').value = currentLang;
             document.getElementById('gas-url-input').value = gasUrl;
+            
+            if (academyCustomLogo) {
+                document.getElementById('header-academy-logo').src = academyCustomLogo;
+                document.getElementById('bg-rotating-img').src = academyCustomLogo;
+                document.getElementById('cert-watermark-img').src = academyCustomLogo;
+                document.getElementById('cert-header-img').src = academyCustomLogo;
+            }
             if (customSidebarLogo) {
                 document.getElementById('sidebar-custom-logo').src = customSidebarLogo;
             }
+
             applyLanguage();
             renderCourses();
             updateDashboardStats();
@@ -1750,29 +1770,78 @@ function doGet(e) {
             document.getElementById('th-imp-date').innerText = t.thDate;
         }
 
-        function openAdminManagerModal() {
-            document.getElementById('admin-manager-modal').classList.remove('hidden');
+        function handleAcademyLogoUpload(event) {
+            if (event.target.files && event.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    academyCustomLogo = e.target.result;
+                    localStorage.setItem('academy_custom_logo', academyCustomLogo);
+                    document.getElementById('header-academy-logo').src = academyCustomLogo;
+                    document.getElementById('bg-rotating-img').src = academyCustomLogo;
+                    document.getElementById('cert-watermark-img').src = academyCustomLogo;
+                    document.getElementById('cert-header-img').src = academyCustomLogo;
+                    showToast(currentLang === 'ar' ? 'تم تحديث شعار الأكاديمية بنجاح' : 'Academy logo updated successfully', 'success');
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
         }
 
-        function closeAdminManagerModal() {
-            document.getElementById('admin-manager-modal').classList.add('hidden');
-        }
-
-        function handleLogoUpload() {
-            const fileInput = document.getElementById('custom-logo-file');
-            if (fileInput.files && fileInput.files[0]) {
+        function handlePartnerLogoUpload(event) {
+            if (event.target.files && event.target.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     customSidebarLogo = e.target.result;
                     localStorage.setItem('custom_sidebar_logo', customSidebarLogo);
                     document.getElementById('sidebar-custom-logo').src = customSidebarLogo;
-                    showToast(currentLang === 'ar' ? 'تم تحديث الشعار الإضافي بنجاح' : 'Custom logo updated successfully', 'success');
+                    showToast(currentLang === 'ar' ? 'تم تحديث شعار شريك النجاح بنجاح' : 'Partner logo updated successfully', 'success');
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        function handleAdminAcademyLogoUpload() {
+            const fileInput = document.getElementById('admin-academy-logo-file');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    academyCustomLogo = e.target.result;
+                    localStorage.setItem('academy_custom_logo', academyCustomLogo);
+                    document.getElementById('header-academy-logo').src = academyCustomLogo;
+                    document.getElementById('bg-rotating-img').src = academyCustomLogo;
+                    document.getElementById('cert-watermark-img').src = academyCustomLogo;
+                    document.getElementById('cert-header-img').src = academyCustomLogo;
+                    showToast(currentLang === 'ar' ? 'تم تحديث شعار الأكاديمية بنجاح' : 'Academy logo updated successfully', 'success');
                     closeAdminManagerModal();
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
                 showToast(currentLang === 'ar' ? 'يرجى اختيار ملف صورة أولاً' : 'Please select an image file first', 'error');
             }
+        }
+
+        function handleAdminPartnerLogoUpload() {
+            const fileInput = document.getElementById('admin-partner-logo-file');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    customSidebarLogo = e.target.result;
+                    localStorage.setItem('custom_sidebar_logo', customSidebarLogo);
+                    document.getElementById('sidebar-custom-logo').src = customSidebarLogo;
+                    showToast(currentLang === 'ar' ? 'تم تحديث شعار شريك النجاح بنجاح' : 'Partner logo updated successfully', 'success');
+                    closeAdminManagerModal();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                showToast(currentLang === 'ar' ? 'يرجى اختيار ملف صورة أولاً' : 'Please select an image file first', 'error');
+            }
+        }
+
+        function openAdminManagerModal() {
+            document.getElementById('admin-manager-modal').classList.remove('hidden');
+        }
+
+        function closeAdminManagerModal() {
+            document.getElementById('admin-manager-modal').classList.add('hidden');
         }
 
         function handleAddNewCourse(event) {
@@ -1903,7 +1972,7 @@ function doGet(e) {
                 container.scrollTop = container.scrollHeight;
 
                 setTimeout(() => {
-                    headerAvatar.innerText = '😊🤖';
+                    headerAvatar.innerText = '👀🤖';
                 }, 3000);
             }, 600);
         }
@@ -1920,8 +1989,8 @@ function doGet(e) {
                     : '🤖✨ The "Training Impact (3 Months)" button is for direct managers to evaluate skill application post-training.';
             } else if (q.includes('أضف') || q.includes('إضافة') || q.includes('دورة') || q.includes('شعار')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ يمكنك الآن إضافة دورات تدريبية جديدة أو رفع شعار إضافي مباشرة من زر "إدارة المنصة وإضافة محتوى" في الشريط الجانبي!' 
-                    : '🤖✨ You can now add new courses or upload custom logos directly using the "Platform Management" button in the sidebar!';
+                    ? '🤖✨ يمكنك الآن رفع شعار الأكاديمية أو شريك النجاح مباشرة من أيقونة الكاميرا بجانب الشعارات!' 
+                    : '🤖✨ You can now upload academy or partner logos directly using the camera icon next to the logos!';
             } else if (q.includes('شهادة') || q.includes('certificate')) {
                 return currentLang === 'ar' 
                     ? '🤖✨ يمكنك إصدار وطباعة الشهادات المعتمدة من زر "إصدار الشهادات" في القائمة الجانبية 🏆' 
