@@ -198,9 +198,18 @@
                             </div>
                             <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-blue-600 flex-shrink-0"></i>
                         </button>
+
+                        <!-- Button for Platform Management & Adding Content Directly from UI -->
+                        <button onclick="openAdminManagerModal()" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-[11px] transition-all group shadow-sm">
+                            <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
+                                <i class="fa-solid fa-gear text-cyan-400 text-xs flex-shrink-0"></i>
+                                <span class="truncate">إدارة المنصة وإضافة محتوى</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-cyan-400 flex-shrink-0"></i>
+                        </button>
                     </nav>
 
-                    <div class="bg-indigo-900 text-white p-3 rounded-xl text-[10px] space-y-1 mt-3 relative overflow-hidden">
+                    <div class="bg-indigo-900 text-white p-3 rounded-2xl text-[10px] space-y-1 mt-3 relative overflow-hidden">
                         <div class="font-bold flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse">
                             <i class="fa-solid fa-shield-halved text-cyan-400"></i>
                             <span id="txt-sb-badge-title">أكاديمية بحرة</span>
@@ -209,13 +218,54 @@
                     </div>
                 </div>
 
+                <!-- Custom Logo Box under Quick Navigation -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-2">
                     <div class="w-24 h-24 rounded-2xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center animated-logo overflow-hidden">
-                        <img src="Ignite Logo Design.png" alt="Ignite Logo Design" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Ignite'">
+                        <img id="sidebar-custom-logo" src="Ignite Logo Design.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
                     </div>
                     <div>
-                        <h4 class="text-xs font-black text-slate-900">Ignite Partner</h4>
-                        <p class="text-[9px] text-slate-400">شريك الابتكار التقني</p>
+                        <h4 class="text-xs font-black text-slate-900">شريك النجاح</h4>
+                        <p class="text-[9px] text-slate-400">شعار إضافي معتمد</p>
+                    </div>
+                </div>
+
+                <!-- Embedded AI Assistant Box right under Ignite Logo -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    <div class="px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
+                        <div class="flex items-center space-x-2.5 space-x-reverse rtl:space-x-reverse">
+                            <div class="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-sm" id="ai-header-avatar">
+                                😊🤖
+                            </div>
+                            <div>
+                                <h4 id="ai-header-title" class="font-bold text-xs">مساعد بحرة الذكي</h4>
+                                <p id="ai-header-subtitle" class="text-[9px] text-indigo-100 flex items-center space-x-1 space-x-reverse rtl:space-x-reverse">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                                    <span>متصل وجاهز</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ai-messages-container" class="p-3 h-56 overflow-y-auto space-y-2.5 bg-slate-50 text-xs flex flex-col">
+                        <div class="flex items-start space-x-2 space-x-reverse rtl:space-x-reverse">
+                            <div class="w-6 h-6 rounded-lg bg-slate-900 text-cyan-400 flex items-center justify-center flex-shrink-0 text-[10px] border border-cyan-400/40">🤖</div>
+                            <div class="bg-white p-2.5 rounded-xl shadow-sm border border-slate-200 text-slate-800 leading-relaxed max-w-[85%]">
+                                <p id="ai-welcome-msg">أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-2 bg-white border-t border-slate-100 flex items-center gap-1 overflow-x-auto">
+                        <button onclick="sendAiQuick('تسجيل دورة')" class="px-2 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-md text-[9px] font-bold whitespace-nowrap transition-all border border-indigo-100">📝 كيف أسجل؟</button>
+                        <button onclick="sendAiQuick('أثر التدريب')" class="px-2 py-1 bg-cyan-50 hover:bg-cyan-100 text-cyan-700 rounded-md text-[9px] font-bold whitespace-nowrap transition-all border border-cyan-100">📈 أثر التدريب</button>
+                        <button onclick="sendAiQuick('قوقل شيت')" class="px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-md text-[9px] font-bold whitespace-nowrap transition-all border border-blue-100">📊 قوقل شيت</button>
+                    </div>
+
+                    <div class="p-2.5 bg-white border-t border-slate-200 flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse">
+                        <input type="text" id="ai-input" onkeypress="handleAiKeyPress(event)" placeholder="اكتب سؤالك هنا..." class="flex-grow bg-slate-100 border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        <button onclick="sendAiUserMessage()" class="w-7 h-7 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center shadow-sm transition-all flex-shrink-0 text-xs">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -298,6 +348,90 @@
         </div>
     </main>
 
+    <!-- Admin Manager Modal to Upload Logo and Add Courses Directly from UI -->
+    <div id="admin-manager-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-800 text-white">
+                <div>
+                    <h3 class="text-lg font-bold">لوحة إدارة المنصة وإضافة المحتوى</h3>
+                    <p class="text-xs text-slate-300">قم بتغيير الشعار الإضافي أو إضافة دورات تدريبية جديدة فوراً من الموقع</p>
+                </div>
+                <button onclick="closeAdminManagerModal()" class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow text-xs text-slate-700">
+                <!-- Section 1: Upload / Change Sidebar Logo -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                    <h4 class="font-bold text-slate-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
+                        <i class="fa-solid fa-image text-indigo-600"></i>
+                        <span>تغيير شعار شريك النجاح الإضافي في الشريط الجانبي</span>
+                    </h4>
+                    <p class="text-slate-500">اختر صورة من جهازك أو أدخل رابط الصورة ليتم تحديثها فوراً في المنصة وتخزينها.</p>
+                    <div class="flex flex-col sm:flex-row gap-3 items-center">
+                        <input type="file" id="custom-logo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
+                        <button type="button" onclick="handleLogoUpload()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md whitespace-nowrap">رفع وتطبيق الشعار</button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Add New Training Course -->
+                <form id="add-course-form" onsubmit="handleAddNewCourse(event)" class="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100 space-y-3">
+                    <h4 class="font-bold text-indigo-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
+                        <i class="fa-solid fa-book-medical text-indigo-600"></i>
+                        <span>إضافة دورة تدريبية جديدة إلى المنصة</span>
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">اسم الدورة (عربي) *</label>
+                            <input type="text" id="new-course-title-ar" required placeholder="مثال: الأمن السيبراني الصناعي" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">اسم الدورة (إنجليزي) *</label>
+                            <input type="text" id="new-course-title-en" required placeholder="e.g., Industrial Cyber Security" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">اسم المدرب *</label>
+                            <input type="text" id="new-course-trainer" required placeholder="مثال: م. رامي الحسن" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">نوع الحضور *</label>
+                            <select id="new-course-type" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                                <option value="onsite">حضوري (On-site)</option>
+                                <option value="remote">عن بعد (Remote)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">المدة التدريبية *</label>
+                            <input type="text" id="new-course-duration" required placeholder="مثال: 3 أيام (15 ساعة)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1">التاريخ *</label>
+                            <input type="text" id="new-course-date" required placeholder="مثال: 01 - 03 مايو 2026" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">وصف الدورة التدريبية *</label>
+                        <textarea id="new-course-desc" required rows="2" placeholder="اكتب نبذة مختصرة عن أهداف الدورة..." class="w-full bg-white border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button type="submit" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all">إضافة الدورة الآن</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backend Modal -->
     <div id="backend-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-blue-50/60">
@@ -314,15 +448,9 @@
                 <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl space-y-2">
                     <div class="font-bold text-blue-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                         <i class="fa-solid fa-circle-info text-blue-600"></i>
-                        <span>خطوات الإعداد والربط:</span>
+                        <span>رابط Google Apps Script المعتمد:</span>
                     </div>
-                    <ol class="list-decimal list-inside space-y-1 text-blue-800">
-                        <li>أنشئ ملف قوقل شيت جديد (Google Sheet).</li>
-                        <li>من القائمة، اضغط على <strong>Extensions > Apps Script</strong>.</li>
-                        <li>احذف الكود الافتراضي والصق الكود الموجود في ملف `Code.gs`.</li>
-                        <li>اضغط على <strong>Deploy > New deployment</strong> واجعل نوع النشر <strong>Web app</strong>، واجعل الوصول متاحاً للجميع (Anyone).</li>
-                        <li>انسخ رابط الـ Web App والصقه في الأسفل ثم اضغط حفظ!</li>
-                    </ol>
+                    <p class="text-blue-800">تم ربط النظام بالرابط الافتراضي الخاص بك بنجاح، ويمكنك تعديله في أي وقت.</p>
                 </div>
 
                 <div>
@@ -335,7 +463,7 @@
 
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="font-bold text-slate-800">كود Google Apps Script (انسخ هذا الكود والصقه في محرر الأبص سكريبت):</label>
+                        <label class="font-bold text-slate-800">كود Google Apps Script (Code.gs):</label>
                         <button onclick="copyGasCode()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[10px] font-bold transition-all"><i class="fa-solid fa-copy ml-1"></i> نسخ الكود</button>
                     </div>
                     <textarea id="gas-code-textarea" readonly rows="8" class="w-full bg-slate-950 text-emerald-400 font-mono text-[10px] p-3 rounded-2xl focus:outline-none">
@@ -377,6 +505,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Registration Modal -->
     <div id="registration-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
@@ -435,6 +564,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Certificate Modal -->
     <div id="certificate-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-emerald-50/60">
@@ -526,6 +656,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Impact Modal -->
     <div id="impact-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-cyan-50/50">
@@ -625,6 +756,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Ideas Modal -->
     <div id="ideas-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-purple-50/50">
@@ -715,6 +847,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Evaluation Modal -->
     <div id="evaluation-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-amber-50/50">
@@ -838,6 +971,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Multi Courses Modal -->
     <div id="multi-courses-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-purple-50/60">
@@ -868,6 +1002,7 @@ function doGet(e) {
         </div>
     </div>
 
+    <!-- Report Modal -->
     <div id="report-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
@@ -964,60 +1099,7 @@ function doGet(e) {
         </div>
     </div>
 
-    <div class="fixed bottom-6 left-6 z-40 flex items-center space-x-3 space-x-reverse rtl:space-x-reverse">
-        <div onclick="toggleAiChat()" class="bg-white/95 backdrop-blur-md shadow-lg border border-slate-200 px-3.5 py-2 rounded-2xl text-xs font-bold text-indigo-700 cursor-pointer hover:bg-white transition-all flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-            <span id="txt-ai-badge">مساعد بحرة الذكي</span>
-        </div>
-
-        <button onclick="toggleAiChat()" class="ai-fab w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 via-blue-600 to-purple-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all focus:outline-none relative group border-2 border-white flex-shrink-0">
-            <div class="flex flex-col items-center justify-center">
-                <div id="ai-status-emoji" class="text-lg mb-0.5 animate-bounce">👀🤖</div>
-            </div>
-        </button>
-
-        <div id="ai-chat-window" class="absolute bottom-20 left-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden hidden transition-all duration-300 origin-bottom-left">
-            <div class="px-5 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
-                <div class="flex items-center space-x-3 space-x-reverse rtl:space-x-reverse">
-                    <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-lg" id="ai-header-avatar">
-                        😊🤖
-                    </div>
-                    <div>
-                        <h4 id="ai-header-title" class="font-bold text-sm">مساعد بحرة الذكي</h4>
-                        <p id="ai-header-subtitle" class="text-[10px] text-indigo-100 flex items-center space-x-1 space-x-reverse rtl:space-x-reverse">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-                            <span>متصل وجاهز للمساعدة</span>
-                        </p>
-                    </div>
-                </div>
-                <button onclick="toggleAiChat()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div id="ai-messages-container" class="p-4 h-80 overflow-y-auto space-y-3 bg-slate-50 text-xs flex flex-col">
-                <div class="flex items-start space-x-2 space-x-reverse rtl:space-x-reverse">
-                    <div class="w-7 h-7 rounded-xl bg-slate-900 text-cyan-400 flex items-center justify-center flex-shrink-0 text-xs border border-cyan-400/40">🤖</div>
-                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 text-slate-800 leading-relaxed max-w-[85%]">
-                        <p id="ai-welcome-msg">أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟ يمكنك سؤال عن الدورات، قياس أثر التدريب (3 شهور)، أو ربط قوقل شيت!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="px-3 py-2 bg-white border-t border-slate-100 flex items-center gap-1.5 overflow-x-auto">
-                <button onclick="sendAiQuick('تسجيل دورة')" class="px-2.5 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all border border-indigo-100">📝 كيف أسجل؟</button>
-                <button onclick="sendAiQuick('أثر التدريب')" class="px-2.5 py-1 bg-cyan-50 hover:bg-cyan-100 text-cyan-700 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all border border-cyan-100">📈 قياس أثر التدريب</button>
-                <button onclick="sendAiQuick('قوقل شيت')" class="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all border border-blue-100">📊 ربط قوقل شيت</button>
-            </div>
-
-            <div class="p-3 bg-white border-t border-slate-200 flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
-                <input type="text" id="ai-input" onkeypress="handleAiKeyPress(event)" placeholder="اكتب سؤالك هنا..." class="flex-grow bg-slate-100 border border-slate-300 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <button onclick="sendAiUserMessage()" class="w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center shadow-md transition-all flex-shrink-0">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- AI Assistant Floating Widget Removed and embedded in Sidebar -->
 
     <div id="toast-container" class="fixed bottom-5 left-5 rtl:left-auto rtl:right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
 
@@ -1026,6 +1108,7 @@ function doGet(e) {
         let currentReportTab = 'registrations';
         let currentIdeasTab = 'submit';
         let gasUrl = localStorage.getItem('gas_url') || 'https://script.google.com/macros/s/AKfycbxFnGok3Bacu5q9LaDEWvyT7gRZq4yShJM-PQa8hx9hIZUyjaMD__WzV1NyR_nZK9OA/exec';
+        let customSidebarLogo = localStorage.getItem('custom_sidebar_logo') || '';
 
         const translations = {
             ar: {
@@ -1339,7 +1422,7 @@ function doGet(e) {
                 submitRegBtn: 'رجسٹریشن کی تصدیق کریں',
                 certModalTitle: 'سرٹیفکیٹ جاری کرنا اور دیکھنا',
                 certModalSub: 'سرٹیفکیٹ جاری کرنے کے لیے ٹرینر اور کورس منتخب کریں',
-                printCertBtn: 'سرٹیفکیٹ پرنٹ کریں',
+                printCertBtn: 'سرٹیفکیط پرنٹ کریں',
                 selectRegEmp: 'رجسٹرڈ ملازم منتخب کریں *',
                 certHint: 'ملازم کے انتخاب کے بعد سرٹیفکیٹ کا پیش منظر یہاں ظاہر ہوتا ہے۔',
                 ideasModalTitle: 'آئیڈیاز، انوویشنز اور ایڈمن اپروول پورٹل',
@@ -1484,6 +1567,9 @@ function doGet(e) {
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('lang-select').value = currentLang;
             document.getElementById('gas-url-input').value = gasUrl;
+            if (customSidebarLogo) {
+                document.getElementById('sidebar-custom-logo').src = customSidebarLogo;
+            }
             applyLanguage();
             renderCourses();
             updateDashboardStats();
@@ -1516,7 +1602,7 @@ function doGet(e) {
                 htmlRoot.setAttribute('lang', 'en');
                 document.getElementById('ai-header-title').innerText = 'Bahra Smart Assistant';
                 document.getElementById('ai-header-subtitle').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span><span>Online & Ready</span>';
-                document.getElementById('ai-welcome-msg').innerText = 'Hello! I am Bahra Smart Assistant at Bahra Learning Academy (BLA) 🤖✨ How can I help you today? You can ask about courses, Google Sheets sync, 3-month training impact, or certificates!';
+                document.getElementById('ai-welcome-msg').innerText = 'Hello! I am Bahra Smart Assistant at Bahra Learning Academy (BLA) 🤖✨ How can I help you today? You can ask about courses, content management, 3-month training impact, or certificates!';
                 document.getElementById('ai-input').placeholder = 'Type your question here...';
             } else if (currentLang === 'ur') {
                 htmlRoot.setAttribute('dir', 'rtl');
@@ -1530,7 +1616,7 @@ function doGet(e) {
                 htmlRoot.setAttribute('lang', 'ar');
                 document.getElementById('ai-header-title').innerText = 'مساعد بحرة الذكي';
                 document.getElementById('ai-header-subtitle').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span><span>متصل وجاهز للمساعدة</span>';
-                document.getElementById('ai-welcome-msg').innerText = 'أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟ يمكنك سؤال عن الدورات، قياس أثر التدريب (3 شهور)، أو ربط قوقل شيت!';
+                document.getElementById('ai-welcome-msg').innerText = 'أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟ يمكنك سؤال عن الدورات، إدارة المحتوى، قياس أثر التدريب، أو ربط قوقل شيت!';
                 document.getElementById('ai-input').placeholder = 'اكتب سؤالك هنا...';
             }
 
@@ -1669,6 +1755,69 @@ function doGet(e) {
             document.getElementById('th-imp-date').innerText = t.thDate;
         }
 
+        // Platform Management Modal Functions
+        function openAdminManagerModal() {
+            document.getElementById('admin-manager-modal').classList.remove('hidden');
+        }
+
+        function closeAdminManagerModal() {
+            document.getElementById('admin-manager-modal').classList.add('hidden');
+        }
+
+        function handleLogoUpload() {
+            const fileInput = document.getElementById('custom-logo-file');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    customSidebarLogo = e.target.result;
+                    localStorage.setItem('custom_sidebar_logo', customSidebarLogo);
+                    document.getElementById('sidebar-custom-logo').src = customSidebarLogo;
+                    showToast(currentLang === 'ar' ? 'تم تحديث الشعار الإضافي بنجاح' : 'Custom logo updated successfully', 'success');
+                    closeAdminManagerModal();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                showToast(currentLang === 'ar' ? 'يرجى اختيار ملف صورة أولاً' : 'Please select an image file first', 'error');
+            }
+        }
+
+        function handleAddNewCourse(event) {
+            event.preventDefault();
+            const titleAr = document.getElementById('new-course-title-ar').value.trim();
+            const titleEn = document.getElementById('new-course-title-en').value.trim();
+            const trainer = document.getElementById('new-course-trainer').value.trim();
+            const attendanceType = document.getElementById('new-course-type').value;
+            const duration = document.getElementById('new-course-duration').value.trim();
+            const date = document.getElementById('new-course-date').value.trim();
+            const desc = document.getElementById('new-course-desc').value.trim();
+
+            const newCourse = {
+                id: 'c-' + Date.now(),
+                image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80',
+                title: { ar: titleAr, en: titleEn, ur: titleAr },
+                trainer: { ar: trainer, en: trainer, ur: trainer },
+                duration: { ar: duration, en: duration, ur: duration },
+                date: { ar: date, en: date, ur: date },
+                attendanceType: attendanceType,
+                location: { 
+                    ar: attendanceType === 'onsite' ? 'قاعة التدريب التقني بالمقر الرئيسي' : 'بث مباشر عبر المنصة الافتراضية', 
+                    en: attendanceType === 'onsite' ? 'HQ Technical Training Hall' : 'Live Virtual Stream', 
+                    ur: 'آن لائن' 
+                },
+                maxCapacity: 20,
+                desc: { ar: desc, en: desc, ur: desc }
+            };
+
+            courses.push(newCourse);
+            localStorage.setItem('training_courses', JSON.stringify(courses));
+            closeAdminManagerModal();
+            renderCourses(document.getElementById('search-input').value);
+            updateDashboardStats();
+            populateFilterDropdowns();
+            populateEvalCourseDropdown();
+            showToast(currentLang === 'ar' ? 'تمت إضافة الدورة التدريبية الجديدة بنجاح للمنصة' : 'New training course added successfully', 'success');
+        }
+
         function openBackendModal() {
             document.getElementById('backend-modal').classList.remove('hidden');
         }
@@ -1692,7 +1841,7 @@ function doGet(e) {
         }
 
         async function sendToGoogleSheet(action, payload) {
-            if (!gasUrl) return; // offline or local fallback
+            if (!gasUrl) return;
             try {
                 payload.action = action;
                 await fetch(gasUrl, {
@@ -1707,8 +1856,7 @@ function doGet(e) {
         }
 
         function toggleAiChat() {
-            const win = document.getElementById('ai-chat-window');
-            win.classList.toggle('hidden');
+            // Deprecated / handled in sidebar
         }
 
         function sendAiQuick(topic) {
@@ -1720,7 +1868,7 @@ function doGet(e) {
             } else if (topic === 'قوقل شيت') {
                 input.value = currentLang === 'ar' ? 'كيف أربط المنصة بملف قوقل شيت؟' : 'How do I connect Google Sheets?';
             } else {
-                input.value = currentLang === 'ar' ? 'كيف أحصل على الشهادة؟' : currentLang === 'ur' ? 'مجھے سرٹیفکیٹ کیسے ملے گا؟' : 'How do I get my certificate?';
+                input.value = currentLang === 'ar' ? 'كيف أضيف دورة جديدة من الموقع؟' : 'How do I add a new course from the website?';
             }
             sendAiUserMessage();
         }
@@ -1778,24 +1926,24 @@ function doGet(e) {
             const q = query.toLowerCase();
             if (q.includes('قوقل شيت') || q.includes('sheet') || q.includes('apps script') || q.includes('database')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ لربط المنصة بقوقل شيت باستخدام ملف Code.gs، أنشئ مشروع Apps Script، ألصق الكود، وانشر كـ Web App ثم الصق الرابط هنا!' 
-                    : '🤖✨ To connect Google Sheets using Code.gs, create an Apps Script project, paste the code, deploy as a Web App, and paste the URL here!';
-            } else if (q.includes('أثر') || q.includes('3 شهور') || q.includes('impact') || q.includes('manager') || q.includes('اثرات')) {
+                    ? '🤖✨ لربط المنصة بقوقل شيت، انقر على زر "ربط قوقل شيت" في القائمة الجانبية والصق رابط الـ Web App الخاص بك!' 
+                    : '🤖✨ To connect Google Sheets, click "Google Sheets" in the sidebar and paste your Web App URL!';
+            } else if (q.includes('أثر') || q.includes('3 شهور') || q.includes('impact') || q.includes('manager')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ زر "قياس أثر التدريب (3 شهور)" مخصص للمدير المباشر لتقييم أداء الموظف بعد 3 أشهر من التدريب.' 
+                    ? '🤖✨ زر "قياس أثر التدريب (3 شهور)" مخصص للمدير المباشر لتقييم أداء الموظف وتطبيقه للمهارات.' 
                     : '🤖✨ The "Training Impact (3 Months)" button is for direct managers to evaluate skill application post-training.';
-            } else if (q.includes('سجل') || q.includes('register') || q.includes('تسجيل')) {
+            } else if (q.includes('أضف') || q.includes('إضافة') || q.includes('دورة') || q.includes('شعار')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ للتسجيل في أي دورة، اضغط "سجل في الدورة" وأدخل بياناتك الوظيفية (الحد الأقصى 20 متدرباً).' 
-                    : '🤖✨ To register, click "Register Course" and enter your employee details (Max 20 trainees).';
+                    ? '🤖✨ يمكنك الآن إضافة دورات تدريبية جديدة أو رفع شعار إضافي مباشرة من زر "إدارة المنصة وإضافة محتوى" في الشريط الجانبي!' 
+                    : '🤖✨ You can now add new courses or upload custom logos directly using the "Platform Management" button in the sidebar!';
             } else if (q.includes('شهادة') || q.includes('certificate')) {
                 return currentLang === 'ar' 
                     ? '🤖✨ يمكنك إصدار وطباعة الشهادات المعتمدة من زر "إصدار الشهادات" في القائمة الجانبية 🏆' 
                     : '🤖✨ You can issue and print approved certificates from the "Issue Certificates" button 🏆';
             } else {
                 return currentLang === 'ar' 
-                    ? '🤖✨ أنا مساعد بحرة الذكي في خدمتك! يمكنك سؤال عن الدورات، ربط قوقل شيت عبر Apps Script، أو قياس أثر التدريب.' 
-                    : '🤖✨ I am Bahra Smart Assistant at your service! Feel free to ask about courses, Apps Script sync, or training impact.';
+                    ? '🤖✨ أنا مساعد بحرة الذكي في خدمتك! يمكنك سؤال عن الدورات، إدارة المحتوى، أو ربط قوقل شيت.' 
+                    : '🤖✨ I am Bahra Smart Assistant at your service! Feel free to ask about courses, content management, or Google Sheets.';
             }
         }
 
@@ -1944,7 +2092,6 @@ function doGet(e) {
             registrations.push(newReg);
             localStorage.setItem('training_registrations', JSON.stringify(registrations));
             
-            // Sync with Google Sheets via Apps Script Web App
             sendToGoogleSheet('register', newReg);
 
             closeRegistrationModal();
