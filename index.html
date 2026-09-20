@@ -199,7 +199,6 @@
                             <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-blue-600 flex-shrink-0"></i>
                         </button>
 
-                        <!-- Button for Platform Management & Adding Content Directly from UI -->
                         <button onclick="openAdminManagerModal()" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-[11px] transition-all group shadow-sm">
                             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
                                 <i class="fa-solid fa-gear text-cyan-400 text-xs flex-shrink-0"></i>
@@ -218,7 +217,7 @@
                     </div>
                 </div>
 
-                <!-- Custom Logo Box under Quick Navigation -->
+                <!-- Custom Logo Box -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-2">
                     <div class="w-24 h-24 rounded-2xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center animated-logo overflow-hidden">
                         <img id="sidebar-custom-logo" src="Ignite Logo Design.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
@@ -229,7 +228,7 @@
                     </div>
                 </div>
 
-                <!-- Embedded AI Assistant Box right under Ignite Logo -->
+                <!-- Embedded AI Assistant Box in Sidebar -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
                         <div class="flex items-center space-x-2.5 space-x-reverse rtl:space-x-reverse">
@@ -240,7 +239,7 @@
                                 <h4 id="ai-header-title" class="font-bold text-xs">مساعد بحرة الذكي</h4>
                                 <p id="ai-header-subtitle" class="text-[9px] text-indigo-100 flex items-center space-x-1 space-x-reverse rtl:space-x-reverse">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-                                    <span>متصل وجاهز</span>
+                                    <span id="ai-status-text">متصل وجاهز</span>
                                 </p>
                             </div>
                         </div>
@@ -348,7 +347,7 @@
         </div>
     </main>
 
-    <!-- Admin Manager Modal to Upload Logo and Add Courses Directly from UI -->
+    <!-- Admin Manager Modal -->
     <div id="admin-manager-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-800 text-white">
@@ -362,20 +361,18 @@
             </div>
             
             <div class="p-6 overflow-y-auto space-y-6 flex-grow text-xs text-slate-700">
-                <!-- Section 1: Upload / Change Sidebar Logo -->
                 <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
                     <h4 class="font-bold text-slate-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                         <i class="fa-solid fa-image text-indigo-600"></i>
                         <span>تغيير شعار شريك النجاح الإضافي في الشريط الجانبي</span>
                     </h4>
-                    <p class="text-slate-500">اختر صورة من جهازك أو أدخل رابط الصورة ليتم تحديثها فوراً في المنصة وتخزينها.</p>
+                    <p class="text-slate-500">اختر صورة من جهازك لتحديثها فوراً في المنصة.</p>
                     <div class="flex flex-col sm:flex-row gap-3 items-center">
                         <input type="file" id="custom-logo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
                         <button type="button" onclick="handleLogoUpload()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md whitespace-nowrap">رفع وتطبيق الشعار</button>
                     </div>
                 </div>
 
-                <!-- Section 2: Add New Training Course -->
                 <form id="add-course-form" onsubmit="handleAddNewCourse(event)" class="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100 space-y-3">
                     <h4 class="font-bold text-indigo-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                         <i class="fa-solid fa-book-medical text-indigo-600"></i>
@@ -1099,8 +1096,6 @@ function doGet(e) {
         </div>
     </div>
 
-    <!-- AI Assistant Floating Widget Removed and embedded in Sidebar -->
-
     <div id="toast-container" class="fixed bottom-5 left-5 rtl:left-auto rtl:right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
 
     <script>
@@ -1601,28 +1596,27 @@ function doGet(e) {
                 htmlRoot.setAttribute('dir', 'ltr');
                 htmlRoot.setAttribute('lang', 'en');
                 document.getElementById('ai-header-title').innerText = 'Bahra Smart Assistant';
-                document.getElementById('ai-header-subtitle').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span><span>Online & Ready</span>';
-                document.getElementById('ai-welcome-msg').innerText = 'Hello! I am Bahra Smart Assistant at Bahra Learning Academy (BLA) 🤖✨ How can I help you today? You can ask about courses, content management, 3-month training impact, or certificates!';
+                document.getElementById('ai-status-text').innerText = 'Online & Ready';
+                document.getElementById('ai-welcome-msg').innerText = 'Hello! I am Bahra Smart Assistant at Bahra Learning Academy (BLA) 🤖✨ How can I help you today?';
                 document.getElementById('ai-input').placeholder = 'Type your question here...';
             } else if (currentLang === 'ur') {
                 htmlRoot.setAttribute('dir', 'rtl');
                 htmlRoot.setAttribute('lang', 'ur');
                 document.getElementById('ai-header-title').innerText = 'بحره کا سمارٹ اسسٹنٹ';
-                document.getElementById('ai-header-subtitle').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span><span>آن لائن اور تیار</span>';
-                document.getElementById('ai-welcome-msg').innerText = 'خوش آمدید! میں بحره لرننگ اکیڈمی (BLA) میں آپ کا سمارٹ اسسٹنٹ ہوں 🤖✨ میں آپ کی کیا مدد کر سکتا ہوں؟';
+                document.getElementById('ai-status-text').innerText = 'آن لائن اور تیار';
+                document.getElementById('ai-welcome-msg').innerText = 'خوش آمدید! میں بحره لرننگ اکیڈمی (BLA) میں آپ کا سمارٹ اسسٹنٹ ہوں 🤖✨';
                 document.getElementById('ai-input').placeholder = 'اپنا سوال یہاں لکھیں...';
             } else {
                 htmlRoot.setAttribute('dir', 'rtl');
                 htmlRoot.setAttribute('lang', 'ar');
                 document.getElementById('ai-header-title').innerText = 'مساعد بحرة الذكي';
-                document.getElementById('ai-header-subtitle').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span><span>متصل وجاهز للمساعدة</span>';
-                document.getElementById('ai-welcome-msg').innerText = 'أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟ يمكنك سؤال عن الدورات، إدارة المحتوى، قياس أثر التدريب، أو ربط قوقل شيت!';
+                document.getElementById('ai-status-text').innerText = 'متصل وجاهز';
+                document.getElementById('ai-welcome-msg').innerText = 'أهلاً بك! أنا مساعد بحرة الذكي في أكاديمية بحرة للتعليم (BLA) 🤖✨ كيف يمكنني مساعدتك اليوم؟';
                 document.getElementById('ai-input').placeholder = 'اكتب سؤالك هنا...';
             }
 
             document.getElementById('txt-brand-title').innerText = t.brandTitle;
             document.getElementById('txt-brand-subtitle').innerText = t.brandSubtitle;
-            document.getElementById('txt-ai-badge').innerText = t.aiBadge;
 
             document.getElementById('txt-sidebar-title').innerText = t.sidebarTitle;
             document.getElementById('txt-sidebar-sub').innerText = t.sidebarSub;
@@ -1755,7 +1749,6 @@ function doGet(e) {
             document.getElementById('th-imp-date').innerText = t.thDate;
         }
 
-        // Platform Management Modal Functions
         function openAdminManagerModal() {
             document.getElementById('admin-manager-modal').classList.remove('hidden');
         }
@@ -1855,10 +1848,6 @@ function doGet(e) {
             }
         }
 
-        function toggleAiChat() {
-            // Deprecated / handled in sidebar
-        }
-
         function sendAiQuick(topic) {
             const input = document.getElementById('ai-input');
             if (topic === 'تسجيل دورة') {
@@ -1885,10 +1874,8 @@ function doGet(e) {
             if (!text) return;
 
             const container = document.getElementById('ai-messages-container');
-            const statusEmoji = document.getElementById('ai-status-emoji');
             const headerAvatar = document.getElementById('ai-header-avatar');
 
-            statusEmoji.innerText = '🤔💭';
             headerAvatar.innerText = '🤔💭';
 
             const userMsg = document.createElement('div');
@@ -1902,7 +1889,6 @@ function doGet(e) {
             container.scrollTop = container.scrollHeight;
 
             setTimeout(() => {
-                statusEmoji.innerText = '😊✨';
                 headerAvatar.innerText = '😊✨';
 
                 const aiReply = generateAiResponse(text);
@@ -1916,7 +1902,6 @@ function doGet(e) {
                 container.scrollTop = container.scrollHeight;
 
                 setTimeout(() => {
-                    statusEmoji.innerText = '👀🤖';
                     headerAvatar.innerText = '😊🤖';
                 }, 3000);
             }, 600);
