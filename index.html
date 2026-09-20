@@ -93,7 +93,6 @@
             <div class="flex items-center space-x-5 space-x-reverse rtl:space-x-reverse flex-wrap">
                 <div class="flex items-center space-x-4 space-x-reverse rtl:space-x-reverse text-right rtl:text-right ltr:text-left">
                     
-                    <!-- Academy Logo with direct upload button -->
                     <div class="relative group">
                         <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center p-2 animated-logo flex-shrink-0 overflow-hidden relative">
                             <img id="header-academy-logo" src="BLA-Logo No Background_5.png" alt="BLA Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/1d4ed8/ffffff?text=BLA'">
@@ -109,8 +108,29 @@
                         <p id="txt-brand-subtitle" class="text-xs text-slate-500 font-medium">Bahra Learning Academy - إدارة الدورات وتقييم ما بعد التدريب</p>
                     </div>
                 </div>
+
+                <!-- Top Action Buttons on the Right -->
+                <div class="hidden md:flex items-center space-x-2 space-x-reverse rtl:space-x-reverse mr-6">
+                    <button onclick="openCertificateModal()" class="px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl font-bold text-xs transition-all border border-emerald-200 flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse shadow-sm">
+                        <i class="fa-solid fa-award"></i>
+                        <span>إصدار الشهادات</span>
+                    </button>
+                    <button onclick="openEvaluationModal()" class="px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded-xl font-bold text-xs transition-all border border-amber-200 flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse shadow-sm">
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <span>التقييم</span>
+                    </button>
+                    <button onclick="openIdeasModal()" class="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-800 rounded-xl font-bold text-xs transition-all border border-purple-200 flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse shadow-sm">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>الأفكار</span>
+                    </button>
+                    <button onclick="openReportModal()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl font-bold text-xs transition-all flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse shadow-sm">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>السجلات</span>
+                    </button>
+                </div>
             </div>
 
+            <!-- Language selector on the far left -->
             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                 <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-3 py-2 rounded-xl font-bold text-xs transition-all shadow-sm border border-indigo-100 focus:outline-none cursor-pointer">
                     <option value="ar">العربية (Arabic)</option>
@@ -125,7 +145,7 @@
     <main class="w-full px-2 sm:px-4 lg:px-6 py-6 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 items-start">
             
-            <!-- Sticky Sidebar with all widgets fixed in place -->
+            <!-- Sticky Sidebar -->
             <aside class="lg:col-span-1 space-y-4 order-last lg:order-first px-1 sticky top-32 self-start max-h-[calc(100vh-8rem)] overflow-y-auto pb-4">
                 <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 space-y-3">
                     <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse border-b border-slate-100 pb-2">
@@ -198,7 +218,7 @@
                         <button onclick="openAdminManagerModal()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-[11px] transition-all group shadow-sm">
                             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
                                 <i class="fa-solid fa-gear text-cyan-400 text-xs flex-shrink-0"></i>
-                                <span class="truncate">إدارة المنصة وإضافة محتوى</span>
+                                <span class="truncate">إدارة المنصة وإضافة دورة</span>
                             </div>
                             <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-cyan-400 flex-shrink-0"></i>
                         </button>
@@ -213,7 +233,7 @@
                     </div>
                 </div>
 
-                <!-- Partner Ignite Logo (Larger Size: w-32 h-32) with direct upload button -->
+                <!-- Partner Ignite Logo (Larger Size: w-32 h-32) -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-2 relative group">
                     <div class="w-32 h-32 rounded-xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center animated-logo overflow-hidden relative">
                         <img id="sidebar-custom-logo" src="Ignite Logo Design_2.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
@@ -234,7 +254,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="px-3 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
                         <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
-                            <div class="w-7 h-7 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-xs" id="ai-header-avatar">
+                            <div class="w-7 h-7 rounded-xl bg-white/25 backdrop-blur-md flex items-center justify-center border border-white/30 text-xs" id="ai-header-avatar">
                                 👀🤖
                             </div>
                             <div>
@@ -271,6 +291,7 @@
                 </div>
             </aside>
 
+            <!-- Main Workspace Area -->
             <div class="lg:col-span-4 space-y-6 px-1">
                 
                 <!-- Statistics Grid -->
@@ -356,8 +377,8 @@
         <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-800 text-white">
                 <div>
-                    <h3 class="text-lg font-bold">لوحة إدارة المنصة وإضافة المحتوى</h3>
-                    <p class="text-xs text-slate-300">قم برفع وتغيير الشعارات أو إضافة دورات تدريبية جديدة فوراً من الموقع</p>
+                    <h3 class="text-lg font-bold">لوحة إدارة المنصة وإضافة دورة تدريبية</h3>
+                    <p class="text-xs text-slate-300">قم برفع وتغيير الشعارات أو إضافة دورات تدريبية جديدة تُحفظ تلقائياً في قوقل شيت</p>
                 </div>
                 <button onclick="closeAdminManagerModal()" class="w-10 h-10 rounded-full bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center transition-all">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -433,7 +454,7 @@
                     </div>
 
                     <div class="flex justify-end pt-2">
-                        <button type="submit" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all">إضافة الدورة الآن</button>
+                        <button type="submit" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-all">إضافة الدورة الآن وحفظها</button>
                     </div>
                 </form>
             </div>
@@ -446,7 +467,7 @@
             <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-blue-50/60">
                 <div>
                     <h3 class="text-lg font-bold text-slate-900">ربط قاعدة بيانات Google Sheets عبر Google Apps Script</h3>
-                    <p class="text-xs text-slate-500">احفظ بيانات المتدربين والتقييمات والمقترحات مباشرة في قوقل شيت</p>
+                    <p class="text-xs text-slate-500">احفظ واستعرض كافة بيانات المتدربين والدورات والتقييمات مباشرة من قوقل شيت</p>
                 </div>
                 <button onclick="closeBackendModal()" class="w-10 h-10 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition-all">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -457,58 +478,17 @@
                 <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl space-y-2">
                     <div class="font-bold text-blue-900 text-sm flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                         <i class="fa-solid fa-circle-info text-blue-600"></i>
-                        <span>رابط Google Apps Script المعتمد:</span>
+                        <span>رابط Google Apps Script Web App المعتمد:</span>
                     </div>
-                    <p class="text-blue-800">تم ربط النظام بالرابط الافتراضي الخاص بك بنجاح، ويمكنك تعديله في أي وقت.</p>
+                    <p class="text-blue-800">النظام مرتبط تلقائياً بقاعدة بيانات Google Sheets الخاصة بك عبر الرابط المعتمد.</p>
                 </div>
 
                 <div>
                     <label class="block font-bold text-slate-800 mb-1">رابط Google Apps Script Web App URL:</label>
                     <div class="flex gap-2">
                         <input type="text" id="gas-url-input" placeholder="https://script.google.com/macros/s/.../exec" class="flex-grow bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono">
-                        <button onclick="saveGasUrl()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all">حفظ الرابط</button>
+                        <button onclick="saveGasUrl()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all">حفظ ومزامنة</button>
                     </div>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label class="font-bold text-slate-800">كود Google Apps Script (Code.gs):</label>
-                        <button onclick="copyGasCode()" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[10px] font-bold transition-all"><i class="fa-solid fa-copy ml-1"></i> نسخ الكود</button>
-                    </div>
-                    <textarea id="gas-code-textarea" readonly rows="8" class="w-full bg-slate-950 text-emerald-400 font-mono text-[10px] p-3 rounded-2xl focus:outline-none">
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
-  try {
-    var data = JSON.parse(e.postData.contents);
-    var action = data.action;
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    
-    if (action === 'register') {
-      var sheet = ss.getSheetByName('Registrations') || ss.insertSheet('Registrations');
-      if (sheet.getLastRow() === 0) { sheet.appendRow(['ID', 'CourseId', 'CourseName', 'EmpName', 'EmpId', 'EmpDept', 'EmpEmail', 'Manager', 'ManagerEmail', 'Date']); }
-      sheet.appendRow([data.id, data.courseId, data.courseName, data.empName, data.empId, data.empDept, data.empEmail, data.empManager, data.empManagerEmail, data.date]);
-    } else if (action === 'evaluate') {
-      var sheet = ss.getSheetByName('Evaluations') || ss.insertSheet('Evaluations');
-      if (sheet.getLastRow() === 0) { sheet.appendRow(['ID', 'CourseId', 'CourseName', 'EmpId', 'Content', 'Instructor', 'Overall', 'Comments', 'Date']); }
-      sheet.appendRow([data.id, data.courseId, data.courseName, data.empId, data.content, data.instructor, data.overall, data.comments, data.date]);
-    } else if (action === 'idea') {
-      var sheet = ss.getSheetByName('Ideas') || ss.insertSheet('Ideas');
-      if (sheet.getLastRow() === 0) { sheet.appendRow(['ID', 'EmpName', 'EmpId', 'EmpDept', 'Type', 'Title', 'Desc', 'Status', 'Date']); }
-      sheet.appendRow([data.id, data.empName, data.empId, data.empDept, data.type, data.title, data.desc, data.status, data.date]);
-    }
-    return ContentService.createTextOutput(JSON.stringify({status: 'success'})).setMimeType(ContentService.MimeType.JSON);
-  } catch(err) {
-    return ContentService.createTextOutput(JSON.stringify({status: 'error', error: err.toString()})).setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
-  }
-}
-function doGet(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  return ContentService.createTextOutput(JSON.stringify({status: 'connected', time: new Date()})).setMimeType(ContentService.MimeType.JSON);
-}
-                    </textarea>
                 </div>
             </div>
         </div>
@@ -1114,9 +1094,16 @@ function doGet(e) {
         let currentLang = localStorage.getItem('training_lang') || 'ar';
         let currentReportTab = 'registrations';
         let currentIdeasTab = 'submit';
-        let gasUrl = localStorage.getItem('gas_url') || 'https://script.google.com/macros/s/AKfycbxFnGok3Bacu5q9LaDEWvyT7gRZq4yShJM-PQa8hx9hIZUyjaMD__WzV1NyR_nZK9OA/exec';
+        let gasUrl = localStorage.getItem('gas_url') || 'https://script.google.com/macros/s/AKfycbyB8p_9npFko7OzR2mOqGznzdHUfKRhwbU8A7CJC7hnWClyioV4QXqP_EBhLEvCQqw/exec';
         let academyCustomLogo = localStorage.getItem('academy_custom_logo') || '';
         let customSidebarLogo = localStorage.getItem('custom_sidebar_logo') || '';
+
+        let courses = [];
+        let registrations = [];
+        let evaluations = [];
+        let impactAssessments = [];
+        let ideas = [];
+        let issuedCertificates = [];
 
         const translations = {
             ar: {
@@ -1502,76 +1489,6 @@ function doGet(e) {
             }
         };
 
-        const defaultCourses = [
-            {
-                id: 'c1',
-                image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
-                title: { ar: 'تركيبات الكهرباء المنزلية والصناعية', en: 'Home & Industrial Electrical Installations', ur: 'گھریلو اور صنعتی الیکٹریکل تنصیبات' },
-                trainer: { ar: 'م. سامي عبد الله', en: 'Eng. Sami Abdullah', ur: 'انجینئر سامی عبداللہ' },
-                duration: { ar: '3 أيام (15 ساعة)', en: '3 Days (15 hrs)', ur: '3 دن (15 گھنٹے)' },
-                date: { ar: '12 - 15 مارس 2026', en: 'Mar 12 - 15, 2026', ur: '12 - 15 مارچ 2026' },
-                attendanceType: 'onsite',
-                location: { ar: 'قاعة التدريب التقني (أ) - المقر الرئيسي', en: 'Technical Training Hall (A) - HQ', ur: 'ٹیکنیکل ٹریننگ ہال (اے) - ہیڈ کوارٹر' },
-                maxCapacity: 20,
-                desc: { ar: 'دورة تطبيقية متقدمة في تمديد اللوحات الكهربائية ومعايير السلامة المهنية طبقاً للكود السعودي (حضوري).', en: 'Advanced practical course in electrical panel wiring and occupational safety (On-site).', ur: 'الیکٹریکل پینل کی تاروں اور پیشہ ورانہ حفاظت کے معیارات میں جدید عملی کورس (آمنے سامنے)۔' }
-            },
-            {
-                id: 'c2',
-                image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
-                title: { ar: 'برمجة وتشغيل أنظمة PLC', en: 'PLC Systems Programming & Operation', ur: 'پی ایل سی سسٹمز پروگرامنگ اور آپریشن' },
-                trainer: { ar: 'د. طارق الحكيم', en: 'Dr. Tariq Al-Hakim', ur: 'ڈاکٹر طارق الحکیم' },
-                duration: { ar: '5 أيام (25 ساعة)', en: '5 Days (25 hrs)', ur: '5 دن (25 گھنٹے)' },
-                date: { ar: '20 - 25 مارس 2026', en: 'Mar 20 - 25, 2026', ur: '20 - 25 مارچ 2026' },
-                attendanceType: 'remote',
-                location: { ar: 'بث مباشر عبر منصة زوم (Zoom)', en: 'Live Broadcast via Zoom', ur: 'زوم کے ذریعے لائیو براڈکاسٹ' },
-                maxCapacity: 20,
-                desc: { ar: 'فهم لغات البرمجة المنطقية المتحكم بها وتطبيقاتها في خطوط الإنتاج والتحكم الآلي (عن بعد).', en: 'Understanding programmable logic programming languages and automation (Remote).' , ur: 'پروگرام ایبل لاجک کنٹرولرز اور آٹومیشن کے اطلاقات کو سمجھنا (آن لائن)۔'}
-            },
-            {
-                id: 'c3',
-                image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-                title: { ar: 'تشغيل وصيانة ماكينات CNC', en: 'CNC Machine Operation & Maintenance', ur: 'سی این سی مشین آپریشن اور مینٹیننس' },
-                trainer: { ar: 'م. فهد القحطاني', en: 'Eng. Fahd Al-Qahtani', ur: 'انجینئر فہد القحطانی' },
-                duration: { ar: '4 أيام (20 ساعة)', en: '4 Days (20 hrs)', ur: '4 دن (20 گھنٹے)' },
-                date: { ar: '05 - 09 أبريل 2026', en: 'Apr 05 - 09, 2026', ur: '05 - 09 اپریل 2026' },
-                attendanceType: 'onsite',
-                location: { ar: 'الورشة الميكانيكية المركزية (ميكانيكا المخارط)', en: 'Central Mechanical Workshop (Lathe Mechanics)', ur: 'سینٹرل مکینیکل ورکشاپ' },
-                maxCapacity: 20,
-                desc: { ar: 'التدريب العملي على ميكانيكا المخارط، معايرة الأدوات، وتشغيل مكائن القطع والحفر بالحاسوب (حضوري).', en: 'Practical training on lathe mechanics, tool calibration, and machining (On-site).', ur: 'خراد کے میکانکس اور مشینی ٹولز پر عملی تربیت (آمنے سامنے)۔' }
-            },
-            {
-                id: 'c4',
-                image: 'https://images.unsplash.com/photo-1509391365360-809297f97521?auto=format&fit=crop&w=600&q=80',
-                title: { ar: 'تصميم وصيانة أنظمة الطاقة الشمسية', en: 'Solar Energy Systems Design & Maintenance', ur: 'شمسی توانائی کے سسٹمز کا ڈیزائن اور مینٹیننس' },
-                trainer: { ar: 'م. عادل الشمري', en: 'Eng. Adel Al-Shammari', ur: 'انجینئر عادل الشمری' },
-                duration: { ar: '3 أيام (18 ساعة)', en: '3 Days (18 hrs)', ur: '3 دن (18 گھنٹے)' },
-                date: { ar: '15 - 18 أبريل 2026', en: 'Apr 15 - 18, 2026', ur: '15 - 18 اپریل 2026' },
-                attendanceType: 'remote',
-                location: { ar: 'القاعة الافتراضية الذكية (عن بعد)', en: 'Smart Virtual Hall (Online)', ur: 'اسمارٹ ورچوئل ہال (آن لائن)' },
-                maxCapacity: 20,
-                desc: { ar: 'أسس حساب الأحمال، اختيار الألواح والعاكسات، وربط أنظمة الطاقة الشمسية الكهروضوئية (عن بعد).', en: 'Basics of load calculation and PV solar systems (Remote).', ur: 'سولر پی وی سسٹمز کے بنیادی اصول (آن لائن)۔' }
-            },
-            {
-                id: 'c5',
-                image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-                title: { ar: 'إدارة السلامة والصحة المهنية (OSHA)', en: 'Occupational Safety & Health (OSHA)', ur: 'پیشہ ورانہ حفاظت اور صحت (OSHA)' },
-                trainer: { ar: 'أ. نايف الدوسري', en: 'Mr. Naif Al-Dosari', ur: 'جناب نائف الدوسری' },
-                duration: { ar: '2 أيام (10 ساعات)', en: '2 Days (10 hrs)', ur: '2 دن (10 گھنٹے)' },
-                date: { ar: '22 - 24 أبريل 2026', en: 'Apr 22 - 24, 2026', ur: '22 - 24 اپریل 2026' },
-                attendanceType: 'onsite',
-                location: { ar: 'قاعة المؤتمرات الرئيسية - مبنى الإدارة', en: 'Main Conference Hall - Admin Building', ur: 'مین کانفرنس ہال - ایڈمن بلڈنگ' },
-                maxCapacity: 20,
-                desc: { ar: 'تطبيق اشتراطات الأمان في بيئة العمل، تحليل المخاطر، وإعداد خطط الاستجابة للطوارئ (حضوري).', en: 'Applying workplace safety requirements and emergency response plans (On-site).', ur: 'کام کی جگہ پر حفاظتی تقاضوں کا نفاذ (آمنے سامنے)۔' }
-            }
-        ];
-
-        let courses = JSON.parse(localStorage.getItem('training_courses')) || defaultCourses;
-        let registrations = JSON.parse(localStorage.getItem('training_registrations')) || [];
-        let evaluations = JSON.parse(localStorage.getItem('training_evaluations')) || [];
-        let impactAssessments = JSON.parse(localStorage.getItem('training_impacts')) || [];
-        let ideas = JSON.parse(localStorage.getItem('training_ideas')) || [];
-        let issuedCertificates = JSON.parse(localStorage.getItem('training_certs')) || [];
-
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('lang-select').value = currentLang;
             document.getElementById('gas-url-input').value = gasUrl;
@@ -1587,14 +1504,47 @@ function doGet(e) {
             }
 
             applyLanguage();
-            renderCourses();
-            updateDashboardStats();
-            populateFilterDropdowns();
+            fetchBackendData();
 
             document.getElementById('search-input').addEventListener('input', (e) => {
                 renderCourses(e.target.value);
             });
         });
+
+        async function fetchBackendData() {
+            if (!gasUrl) return;
+            try {
+                const response = await fetch(`${gasUrl}?action=getData`);
+                const result = await response.json();
+                if (result.status === 'success') {
+                    if (result.courses && result.courses.length > 0) {
+                        courses = result.courses.map(c => ({
+                            id: c.id,
+                            image: c.image,
+                            title: { ar: c.title_ar, en: c.title_en, ur: c.title_ar },
+                            trainer: { ar: c.trainer_ar, en: c.trainer_en, ur: c.trainer_ar },
+                            duration: { ar: c.duration_ar, en: c.duration_en, ur: c.duration_ar },
+                            date: { ar: c.date_ar, en: c.date_en, ur: c.date_ar },
+                            attendanceType: c.attendanceType,
+                            location: { ar: c.location_ar, en: c.location_en, ur: c.location_ar },
+                            maxCapacity: Number(c.maxCapacity) || 20,
+                            desc: { ar: c.desc_ar, en: c.desc_en, ur: c.desc_ar }
+                        }));
+                    }
+                    registrations = result.registrations || [];
+                    evaluations = result.evaluations || [];
+                    ideas = result.ideas || [];
+                    impactAssessments = result.impacts || [];
+                    issuedCertificates = result.certs || [];
+                }
+            } catch (err) {
+                console.error("Error fetching from Google Sheets:", err);
+            } finally {
+                renderCourses();
+                updateDashboardStats();
+                populateFilterDropdowns();
+            }
+        }
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -1844,7 +1794,7 @@ function doGet(e) {
             document.getElementById('admin-manager-modal').classList.add('hidden');
         }
 
-        function handleAddNewCourse(event) {
+        async function handleAddNewCourse(event) {
             event.preventDefault();
             const titleAr = document.getElementById('new-course-title-ar').value.trim();
             const titleEn = document.getElementById('new-course-title-en').value.trim();
@@ -1854,31 +1804,30 @@ function doGet(e) {
             const date = document.getElementById('new-course-date').value.trim();
             const desc = document.getElementById('new-course-desc').value.trim();
 
-            const newCourse = {
+            const newCoursePayload = {
+                action: 'addCourse',
                 id: 'c-' + Date.now(),
-                image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80',
-                title: { ar: titleAr, en: titleEn, ur: titleAr },
-                trainer: { ar: trainer, en: trainer, ur: trainer },
-                duration: { ar: duration, en: duration, ur: duration },
-                date: { ar: date, en: date, ur: date },
+                title_ar: titleAr,
+                title_en: titleEn,
+                trainer_ar: trainer,
+                trainer_en: trainer,
+                duration_ar: duration,
+                duration_en: duration,
+                date_ar: date,
+                date_en: date,
                 attendanceType: attendanceType,
-                location: { 
-                    ar: attendanceType === 'onsite' ? 'قاعة التدريب التقني بالمقر الرئيسي' : 'بث مباشر عبر المنصة الافتراضية', 
-                    en: attendanceType === 'onsite' ? 'HQ Technical Training Hall' : 'Live Virtual Stream', 
-                    ur: 'آن لائن' 
-                },
+                location_ar: attendanceType === 'onsite' ? 'قاعة التدريب التقني بالمقر الرئيسي' : 'بث مباشر عبر المنصة الافتراضية',
+                location_en: attendanceType === 'onsite' ? 'HQ Technical Training Hall' : 'Live Virtual Stream',
                 maxCapacity: 20,
-                desc: { ar: desc, en: desc, ur: desc }
+                desc_ar: desc,
+                desc_en: desc,
+                image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80'
             };
 
-            courses.push(newCourse);
-            localStorage.setItem('training_courses', JSON.stringify(courses));
+            await sendToGoogleSheet('addCourse', newCoursePayload);
             closeAdminManagerModal();
-            renderCourses(document.getElementById('search-input').value);
-            updateDashboardStats();
-            populateFilterDropdowns();
-            populateEvalCourseDropdown();
-            showToast(currentLang === 'ar' ? 'تمت إضافة الدورة التدريبية الجديدة بنجاح للمنصة' : 'New training course added successfully', 'success');
+            fetchBackendData();
+            showToast(currentLang === 'ar' ? 'تمت إضافة الدورة التدريبية بنجاح وحفظها في قوقل شيت' : 'New course added and saved to Google Sheets', 'success');
         }
 
         function openBackendModal() {
@@ -1892,15 +1841,9 @@ function doGet(e) {
         function saveGasUrl() {
             gasUrl = document.getElementById('gas-url-input').value.trim();
             localStorage.setItem('gas_url', gasUrl);
-            showToast(currentLang === 'ar' ? 'تم حفظ رابط Google Apps Script بنجاح' : 'Google Apps Script URL saved successfully', 'success');
+            showToast(currentLang === 'ar' ? 'تم حفظ ومزامنة رابط Google Apps Script بنجاح' : 'Google Apps Script URL saved successfully', 'success');
             closeBackendModal();
-        }
-
-        function copyGasCode() {
-            const textarea = document.getElementById('gas-code-textarea');
-            textarea.select();
-            document.execCommand('copy');
-            showToast(currentLang === 'ar' ? 'تم نسخ كود الأبس سكريبت بنجاح' : 'Apps Script code copied successfully', 'success');
+            fetchBackendData();
         }
 
         async function sendToGoogleSheet(action, payload) {
@@ -1981,24 +1924,24 @@ function doGet(e) {
             const q = query.toLowerCase();
             if (q.includes('قوقل شيت') || q.includes('sheet') || q.includes('apps script') || q.includes('database')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ لربط المنصة بقوقل شيت، انقر على زر "ربط قوقل شيت" في القائمة الجانبية والصق رابط الـ Web App الخاص بك!' 
-                    : '🤖✨ To connect Google Sheets, click "Google Sheets" in the sidebar and paste your Web App URL!';
+                    ? '🤖✨ جميع البيانات مرتبطة بقاعدة بيانات Google Sheets بشكل كامل عبر Google Apps Script!' 
+                    : '🤖✨ All data is fully synced with Google Sheets via Google Apps Script!';
             } else if (q.includes('أثر') || q.includes('3 شهور') || q.includes('impact') || q.includes('manager')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ زر "قياس أثر التدريب (3 شهور)" مخصص للمدير المباشر لتقييم أداء الموظف وتطبيقه للمهارات.' 
-                    : '🤖✨ The "Training Impact (3 Months)" button is for direct managers to evaluate skill application post-training.';
+                    ? '🤖✨ زر "قياس أثر التدريب (3 شهور)" مخصص للمدير المباشر لتقييم أداء الموظف وتطبيقه للهارات.' 
+                    : '🤖✨ The "Training Impact (3 Months)" button is for direct managers to evaluate skill application.';
             } else if (q.includes('أضف') || q.includes('إضافة') || q.includes('دورة') || q.includes('شعار')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ يمكنك الآن رفع شعار الأكاديمية أو شريك النجاح مباشرة من أيقونة الكاميرا بجانب الشعارات!' 
-                    : '🤖✨ You can now upload academy or partner logos directly using the camera icon next to the logos!';
+                    ? '🤖✨ يمكنك إضافة دورات جديدة وتحديث الشعارات مباشرة من لوحة الإدارة وسيتم حفظها في قوقل شيت!' 
+                    : '🤖✨ You can add new courses and update logos directly from the admin panel!';
             } else if (q.includes('شهادة') || q.includes('certificate')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ يمكنك إصدار وطباعة الشهادات المعتمدة من زر "إصدار الشهادات" في القائمة الجانبية 🏆' 
-                    : '🤖✨ You can issue and print approved certificates from the "Issue Certificates" button 🏆';
+                    ? '🤖✨ يمكنك إصدار وطباعة الشهادات المعتمدة من زر "إصدار الشهادات" 🏆' 
+                    : '🤖✨ You can issue and print approved certificates 🏆';
             } else {
                 return currentLang === 'ar' 
-                    ? '🤖✨ أنا مساعد بحرة الذكي في خدمتك! يمكنك سؤال عن الدورات، إدارة المحتوى، أو ربط قوقل شيت.' 
-                    : '🤖✨ I am Bahra Smart Assistant at your service! Feel free to ask about courses, content management, or Google Sheets.';
+                    ? '🤖✨ أنا مساعد بحرة الذكي في خدمتك! بياناتك محفوظة ومحدثة تلقائياً في Google Sheets.' 
+                    : '🤖✨ I am Bahra Smart Assistant at your service! Your data is stored in Google Sheets.';
             }
         }
 
@@ -2106,7 +2049,7 @@ function doGet(e) {
             document.getElementById('registration-form').reset();
         }
 
-        function handleRegistrationSubmit(event) {
+        async function handleRegistrationSubmit(event) {
             event.preventDefault();
             const courseId = document.getElementById('modal-course-id').value;
             const empName = document.getElementById('emp-name').value.trim();
@@ -2145,17 +2088,11 @@ function doGet(e) {
             };
 
             registrations.push(newReg);
-            localStorage.setItem('training_registrations', JSON.stringify(registrations));
-            
-            sendToGoogleSheet('register', newReg);
+            await sendToGoogleSheet('register', newReg);
 
             closeRegistrationModal();
-            renderCourses(document.getElementById('search-input').value);
-            updateDashboardStats();
-            populateFilterDropdowns();
-            populateCertificateDropdown();
-            populateImpactDropdown();
-            showToast(currentLang === 'ar' ? 'تم تسجيل المتدرب بنجاح وحفظه في النظام وقوقل شيت' : 'Trainee registered successfully and synced with Google Sheets', 'success');
+            fetchBackendData();
+            showToast(currentLang === 'ar' ? 'تم تسجيل المتدرب بنجاح وحفظه في Google Sheets' : 'Trainee registered successfully and saved to Google Sheets', 'success');
         }
 
         function openCertificateModal() {
@@ -2179,7 +2116,7 @@ function doGet(e) {
             });
         }
 
-        function previewCertificate(regIdParam = null) {
+        async function previewCertificate(regIdParam = null) {
             const regId = regIdParam || document.getElementById('cert-registration-select').value;
             if (!regId) return;
 
@@ -2193,14 +2130,15 @@ function doGet(e) {
             document.getElementById('cert-date').innerText = reg.date;
 
             if (!issuedCertificates.some(c => c.regId === reg.id)) {
-                issuedCertificates.push({
+                const newCert = {
                     id: 'cert-' + Date.now(),
                     regId: reg.id,
                     empName: reg.empName,
                     courseName: reg.courseName,
                     date: reg.date
-                });
-                localStorage.setItem('training_certs', JSON.stringify(issuedCertificates));
+                };
+                issuedCertificates.push(newCert);
+                await sendToGoogleSheet('certificate', newCert);
                 updateDashboardStats();
             }
         }
@@ -2233,7 +2171,7 @@ function doGet(e) {
             });
         }
 
-        function handleImpactSubmit(event) {
+        async function handleImpactSubmit(event) {
             event.preventDefault();
             const regId = document.getElementById('impact-reg-select').value;
             const mgrName = document.getElementById('impact-mgr-name').value.trim();
@@ -2258,9 +2196,9 @@ function doGet(e) {
             };
 
             impactAssessments.push(newImp);
-            localStorage.setItem('training_impacts', JSON.stringify(impactAssessments));
+            await sendToGoogleSheet('impact', newImp);
             closeImpactModal();
-            showToast(currentLang === 'ar' ? 'تم حفظ تقييم أثر التدريب بعد 3 شهور بنجاح' : '3-Month training impact assessment saved successfully', 'success');
+            showToast(currentLang === 'ar' ? 'تم حفظ تقييم أثر التدريب بعد 3 شهور في Google Sheets بنجاح' : '3-Month training impact saved to Google Sheets', 'success');
         }
 
         function getMultiCourseTrainees() {
@@ -2357,7 +2295,7 @@ function doGet(e) {
             }
         }
 
-        function handleIdeaSubmit(event) {
+        async function handleIdeaSubmit(event) {
             event.preventDefault();
             const idea = {
                 id: 'idea-' + Date.now(),
@@ -2372,22 +2310,21 @@ function doGet(e) {
             };
 
             ideas.push(idea);
-            localStorage.setItem('training_ideas', JSON.stringify(ideas));
-            sendToGoogleSheet('idea', idea);
+            await sendToGoogleSheet('idea', idea);
 
             document.getElementById('idea-form').reset();
             switchIdeasTab('list');
             updateDashboardStats();
-            showToast(currentLang === 'ar' ? 'تم إرسال الفكرة والمقترح بنجاح' : 'Idea submitted successfully', 'success');
+            showToast(currentLang === 'ar' ? 'تم إرسال الفكرة وحفظها في Google Sheets' : 'Idea submitted and saved', 'success');
         }
 
-        function updateIdeaStatus(ideaId, newStatus) {
+        async function updateIdeaStatus(ideaId, newStatus) {
             const idea = ideas.find(i => i.id === ideaId);
             if (idea) {
                 idea.status = newStatus;
-                localStorage.setItem('training_ideas', JSON.stringify(ideas));
+                await sendToGoogleSheet('updateIdeaStatus', { id: ideaId, status: newStatus });
                 renderIdeasTable();
-                showToast(currentLang === 'ar' ? `تم تحديث حالة المقترح إلى: ${newStatus}` : `Proposal status updated to: ${newStatus}`, 'success');
+                showToast(currentLang === 'ar' ? `تم تحديث الحالة إلى: ${newStatus}` : `Status updated to: ${newStatus}`, 'success');
             }
         }
 
@@ -2396,7 +2333,7 @@ function doGet(e) {
             tbody.innerHTML = '';
 
             if (ideas.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400">${currentLang === 'ar' ? 'لا توجد أفكار أو مقترحات مسجلة حتى الآن' : 'No ideas or suggestions recorded yet'}</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400">${currentLang === 'ar' ? 'لا توجد أفكار أو مقترحات مسجلة حتى الآن' : 'No ideas recorded yet'}</td></tr>`;
                 return;
             }
 
@@ -2459,7 +2396,7 @@ function doGet(e) {
             });
         }
 
-        function handleEvaluationSubmit(event) {
+        async function handleEvaluationSubmit(event) {
             event.preventDefault();
             const courseId = document.getElementById('eval-course-select').value;
             const empId = document.getElementById('eval-emp-id').value.trim();
@@ -2489,12 +2426,11 @@ function doGet(e) {
             };
 
             evaluations.push(newEval);
-            localStorage.setItem('training_evaluations', JSON.stringify(evaluations));
-            sendToGoogleSheet('evaluate', newEval);
+            await sendToGoogleSheet('evaluate', newEval);
 
             closeEvaluationModal();
             updateDashboardStats();
-            showToast(currentLang === 'ar' ? 'تم إرسال تقييم ما بعد التدريب بنجاح وحفظه' : 'Post-training evaluation submitted successfully', 'success');
+            showToast(currentLang === 'ar' ? 'تم إرسال وحفظ التقييم في Google Sheets' : 'Evaluation submitted and saved', 'success');
         }
 
         function openReportModal() {
