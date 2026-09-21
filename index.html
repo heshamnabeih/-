@@ -109,7 +109,6 @@
                     </div>
                 </div>
 
-                <!-- Top Action Buttons on the Right -->
                 <div class="hidden md:flex items-center space-x-2 space-x-reverse rtl:space-x-reverse mr-6">
                     <button onclick="openCertificateModal()" class="px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl font-bold text-xs transition-all border border-emerald-200 flex items-center space-x-1.5 space-x-reverse rtl:space-x-reverse shadow-sm">
                         <i class="fa-solid fa-award"></i>
@@ -130,7 +129,6 @@
                 </div>
             </div>
 
-            <!-- Language selector on the far left -->
             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
                 <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-3 py-2 rounded-xl font-bold text-xs transition-all shadow-sm border border-indigo-100 focus:outline-none cursor-pointer">
                     <option value="ar">العربية (Arabic)</option>
@@ -145,7 +143,6 @@
     <main class="w-full px-2 sm:px-4 lg:px-6 py-6 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 items-start">
             
-            <!-- Sticky Sidebar -->
             <aside class="lg:col-span-1 space-y-4 order-last lg:order-first px-1 sticky top-32 self-start max-h-[calc(100vh-8rem)] overflow-y-auto pb-4">
                 <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200 space-y-3">
                     <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse border-b border-slate-100 pb-2">
@@ -183,14 +180,6 @@
                             <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-indigo-600 flex-shrink-0"></i>
                         </button>
 
-                        <button onclick="openCertificateModal()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold text-[11px] transition-all border border-emerald-200 group">
-                            <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
-                                <i class="fa-solid fa-award text-emerald-600 text-xs flex-shrink-0"></i>
-                                <span id="txt-sb-certs" class="truncate">إصدار الشهادات</span>
-                            </div>
-                            <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-emerald-600 flex-shrink-0"></i>
-                        </button>
-
                         <button onclick="openImpactModal()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-cyan-50 hover:bg-cyan-100 text-cyan-900 font-bold text-[11px] transition-all border border-cyan-200 group">
                             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
                                 <i class="fa-solid fa-chart-line text-cyan-600 text-xs flex-shrink-0"></i>
@@ -215,6 +204,14 @@
                             <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-blue-600 flex-shrink-0"></i>
                         </button>
 
+                        <button onclick="openCertificateModal()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold text-[11px] transition-all border border-emerald-200 group">
+                            <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
+                                <i class="fa-solid fa-award text-emerald-600 text-xs flex-shrink-0"></i>
+                                <span id="txt-sb-certs" class="truncate">إصدار الشهادات</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-left rtl:rotate-180 text-[9px] text-emerald-600 flex-shrink-0"></i>
+                        </button>
+
                         <button onclick="openAdminManagerModal()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-[11px] transition-all group shadow-sm">
                             <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse truncate">
                                 <i class="fa-solid fa-gear text-cyan-400 text-xs flex-shrink-0"></i>
@@ -233,7 +230,6 @@
                     </div>
                 </div>
 
-                <!-- Partner Ignite Logo (Larger Size: w-32 h-32) -->
                 <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col items-center justify-center text-center space-y-2 relative group">
                     <div class="w-32 h-32 rounded-xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center animated-logo overflow-hidden relative">
                         <img id="sidebar-custom-logo" src="Ignite Logo Design_2.png" alt="Partner Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/150x150/4f46e5/ffffff?text=Logo'">
@@ -250,7 +246,6 @@
                     </div>
                 </div>
 
-                <!-- Embedded AI Assistant Box in Sidebar (Directly below Ignite Logo) -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="px-3 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-between">
                         <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse">
@@ -291,11 +286,9 @@
                 </div>
             </aside>
 
-            <!-- Main Workspace Area -->
             <div class="lg:col-span-4 space-y-6 px-1">
                 
-                <!-- Statistics Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between">
                         <div>
                             <p id="txt-stat-courses-label" class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">إجمالي الدورات</p>
@@ -303,15 +296,6 @@
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-base">
                             <i class="fa-solid fa-book-open"></i>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between">
-                        <div>
-                            <p id="txt-stat-reg-label" class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">المقاعد المحجوزة</p>
-                            <h3 id="stat-total-registered" class="text-xl font-black text-indigo-600 mt-0.5">0 <span class="text-[10px] font-normal text-slate-400">/ 100</span></h3>
-                        </div>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-base">
-                            <i class="fa-solid fa-users"></i>
                         </div>
                     </div>
                     <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between">
@@ -341,23 +325,13 @@
                             <i class="fa-solid fa-award"></i>
                         </div>
                     </div>
-                    <div onclick="openMultiCoursesModal()" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between cursor-pointer hover:border-purple-300 transition-all group">
-                        <div>
-                            <p id="txt-stat-multi-label" class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">مسجلون بأكثر من دورة</p>
-                            <h3 id="stat-multi-trainees" class="text-xl font-black text-purple-600 mt-0.5">0</h3>
-                        </div>
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-user-graduate"></i>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Courses Section -->
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                     <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <h2 id="txt-available-courses" class="text-xl font-bold text-slate-900">الدورات التدريبية المتاحة للتسجيل</h2>
-                            <p id="txt-available-subtitle" class="text-xs text-slate-500">سجل بياناتك الوظيفية مباشرة (الحد الأقصى 20 متدرباً لكل دورة - حضوري وعن بعد)</p>
+                            <h2 id="txt-available-courses" class="text-xl font-bold text-slate-900">الدورات التدريبية المتاحة للتسجيل والمقاعد المحجوزة</h2>
+                            <p id="txt-available-subtitle" class="text-xs text-slate-500">سجل بياناتك الوظيفية مباشرة (الحد الأقصى 20 متدرباً لكل دورة - ارتباط مباشر بقاعدة بيانات قوقل شيت)</p>
                         </div>
                         <div class="flex items-center space-x-2 space-x-reverse rtl:space-x-reverse w-full sm:w-auto">
                             <input type="text" id="search-input" placeholder="بحث عن دورة أو مدرب..." class="w-full sm:w-64 bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm">
@@ -1121,7 +1095,6 @@
                 sbBadgeTitle: 'أكاديمية بحرة',
                 sbBadgeDesc: 'معايير الجودة والكود السعودي.',
                 totalCourses: 'إجمالي الدورات',
-                registeredSeats: 'المقاعد المحجوزة',
                 fullCourses: 'الدورات المكتملة (20/20)',
                 avgSatisfaction: 'متوسط تقييم الرضا',
                 certsLabel: 'الشهادات الصادرة',
@@ -1133,8 +1106,8 @@
                 thMultiDept: 'القسم',
                 thMultiCount: 'عدد الدورات',
                 thMultiList: 'الدورات المسجل بها',
-                availableCourses: 'الدورات التدريبية المتاحة للتسجيل',
-                availableSubtitle: 'سجل بياناتك الوظيفية مباشرة (الحد الأقصى 20 متدرباً لكل دورة - حضوري وعن بعد)',
+                availableCourses: 'الدورات التدريبية المتاحة للتسجيل والمقاعد المحجوزة',
+                availableSubtitle: 'سجل بياناتك الوظيفية مباشرة (الحد الأقصى 20 متدرباً لكل دورة - ارتباط مباشر بقاعدة بيانات قوقل شيت)',
                 searchPlaceholder: 'بحث عن دورة أو مدرب...',
                 trainerLabel: 'المدرب:',
                 locationLabel: 'المكان:',
@@ -1248,7 +1221,6 @@
                 sbBadgeTitle: 'Accredited',
                 sbBadgeDesc: 'Quality standards & Saudi Code.',
                 totalCourses: 'Total Courses',
-                registeredSeats: 'Reserved Seats',
                 fullCourses: 'Full Courses (20/20)',
                 avgSatisfaction: 'Avg Satisfaction',
                 certsLabel: 'Issued Certificates',
@@ -1260,8 +1232,8 @@
                 thMultiDept: 'Department',
                 thMultiCount: 'Course Count',
                 thMultiList: 'Registered Courses',
-                availableCourses: 'Available Training Courses',
-                availableSubtitle: 'Register your employee details directly (Max 20 trainees per course - On-site & Remote)',
+                availableCourses: 'Available Training Courses & Reserved Seats',
+                availableSubtitle: 'Register employee details directly (Max 20 trainees per course - Google Sheets synced)',
                 searchPlaceholder: 'Search course or trainer...',
                 trainerLabel: 'Trainer:',
                 locationLabel: 'Location:',
@@ -1375,7 +1347,6 @@
                 sbBadgeTitle: 'بحره اکیڈمی',
                 sbBadgeDesc: 'معیار اور سعودی کوڈ کے تقاضے۔',
                 totalCourses: 'کل کورسز',
-                registeredSeats: 'بک کی گئی نشستیں',
                 fullCourses: 'مکمل کورسز (20/20)',
                 avgSatisfaction: 'اوسط اطمینان',
                 certsLabel: 'جاری کردہ سرٹیفکیٹس',
@@ -1602,7 +1573,6 @@
             document.getElementById('txt-sb-badge-desc').innerText = t.sbBadgeDesc;
 
             document.getElementById('txt-stat-courses-label').innerText = t.totalCourses;
-            document.getElementById('txt-stat-reg-label').innerText = t.registeredSeats;
             document.getElementById('txt-stat-full-label').innerText = t.fullCourses;
             document.getElementById('txt-stat-satisfaction-label').innerText = t.avgSatisfaction;
             document.getElementById('txt-stat-certs-label').innerText = t.certsLabel;
@@ -1988,9 +1958,9 @@
                         
                         <div class="mb-3 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
                             <div class="flex justify-between items-center text-[10px] font-bold mb-1">
-                                <span class="text-slate-600">${currentLang === 'ar' ? 'المقاعد المتبقية:' : currentLang === 'ur' ? 'باقی نشستیں:' : 'Remaining Seats:'}</span>
+                                <span class="text-slate-600">${currentLang === 'ar' ? 'المقاعد المحجوزة:' : currentLang === 'ur' ? 'محفوظ نشستیں:' : 'Reserved Seats:'}</span>
                                 <span class="${isFull ? 'text-rose-600 font-black' : 'text-emerald-600 font-black'}">
-                                    ${isFull ? (currentLang === 'ar' ? 'مكتمل العدد (20/20)' : currentLang === 'ur' ? 'تعداد مکمل ہے (20/20)' : 'Full Capacity (20/20)') : (currentLang === 'ar' ? `${remainingSeats} من 20` : currentLang === 'ur' ? `${remainingSeats} از 20` : `${remainingSeats} of 20`)}
+                                    ${isFull ? (currentLang === 'ar' ? 'مكتمل العدد (20/20)' : currentLang === 'ur' ? 'تعداد مکمل ہے (20/20)' : 'Full Capacity (20/20)') : (currentLang === 'ar' ? `${count} من ${c.maxCapacity} (المتبقي: ${remainingSeats})` : currentLang === 'ur' ? `${count} از ${c.maxCapacity}` : `${count} of ${c.maxCapacity}`)}
                                 </span>
                             </div>
                             <div class="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden shadow-inner">
@@ -2585,9 +2555,6 @@
 
         function updateDashboardStats() {
             document.getElementById('stat-total-courses').innerText = courses.length;
-            
-            const totalRegs = registrations.length;
-            document.getElementById('stat-total-registered').innerHTML = `${totalRegs} <span class="text-[10px] font-normal text-slate-400">/ ${courses.length * 20}</span>`;
 
             let fullCount = 0;
             courses.forEach(c => {
@@ -2604,7 +2571,6 @@
             document.getElementById('stat-avg-satisfaction').innerHTML = `${avgSat} <span class="text-xs text-amber-500"><i class="fa-solid fa-star"></i></span>`;
 
             document.getElementById('stat-total-certs').innerText = issuedCertificates.length;
-            document.getElementById('stat-multi-trainees').innerText = getMultiCourseTrainees().length;
         }
 
         function printReport() {
