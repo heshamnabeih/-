@@ -1072,7 +1072,70 @@
         let academyCustomLogo = localStorage.getItem('academy_custom_logo') || '';
         let customSidebarLogo = localStorage.getItem('custom_sidebar_logo') || '';
 
-        let courses = [];
+        // Default default 5 training courses
+        let courses = [
+            {
+                id: 'c1',
+                image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+                title: { ar: 'تركيبات الكهرباء المنزلية والصناعية', en: 'Home & Industrial Electrical Installations', ur: 'گھریلو اور صنعتی الیکٹریکل تنصیبات' },
+                trainer: { ar: 'م. سامي عبد الله', en: 'Eng. Sami Abdullah', ur: 'انجینئر سامی عبداللہ' },
+                duration: { ar: '3 أيام (15 ساعة)', en: '3 Days (15 hrs)', ur: '3 دن (15 گھنٹے)' },
+                date: { ar: '12 - 15 مارس 2026', en: 'Mar 12 - 15, 2026', ur: '12 - 15 مارچ 2026' },
+                attendanceType: 'onsite',
+                location: { ar: 'قاعة التدريب التقني (أ) - المقر الرئيسي', en: 'Technical Training Hall (A) - HQ', ur: 'فنی تربیتی ہال (A) - ہیڈ کوارٹر' },
+                maxCapacity: 20,
+                desc: { ar: 'دورة تطبيقية متقدمة في تمديد اللوحات الكهربائية ومعايير السلامة المهنية طبقاً للكود السعودي (حضوري).', en: 'Advanced practical course in electrical panel wiring and occupational safety (On-site).', ur: 'الیکٹریکل پینل وائرنگ میں اعلی درجے کا عملی کورس۔' }
+            },
+            {
+                id: 'c2',
+                image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+                title: { ar: 'برمجة وتشغيل أنظمة PLC', en: 'PLC Systems Programming & Operation', ur: 'PLC سسٹمز پروگرامنگ اور آپریشن' },
+                trainer: { ar: 'د. طارق الحكيم', en: 'Dr. Tariq Al-Hakim', ur: 'ڈاکٹر طارق الحکیم' },
+                duration: { ar: '5 أيام (25 ساعة)', en: '5 Days (25 hrs)', ur: '5 دن (25 گھنٹے)' },
+                date: { ar: '20 - 25 مارس 2026', en: 'Mar 20 - 25, 2026', ur: '20 - 25 مارچ 2026' },
+                attendanceType: 'remote',
+                location: { ar: 'بث مباشر عبر منصة زوم (Zoom)', en: 'Live Broadcast via Zoom', ur: 'زوم کے ذریعے براہ راست نشریات' },
+                maxCapacity: 20,
+                desc: { ar: 'فهم لغات البرمجة المنطقية المتحكم بها وتطبيقاتها في خطوط الإنتاج والتحكم الآلي (عن بعد).', en: 'Understanding programmable logic programming languages and automation (Remote).', ur: 'پروگرام ایبل لاجک پروگرامنگ زبانوں کو سمجھنا۔' }
+            },
+            {
+                id: 'c3',
+                image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+                title: { ar: 'تشغيل وصيانة ماكينات CNC', en: 'CNC Machine Operation & Maintenance', ur: 'CNC مشین آپریشن اور دیکھ بھال' },
+                trainer: { ar: 'م. فهد القحطاني', en: 'Eng. Fahd Al-Qahtani', ur: 'انجینئر فہد القحطانی' },
+                duration: { ar: '4 أيام (20 ساعة)', en: '4 Days (20 hrs)', ur: '4 دن (20 گھنٹے)' },
+                date: { ar: '05 - 09 أبريل 2026', en: 'Apr 05 - 09, 2026', ur: '05 - 09 اپریل 2026' },
+                attendanceType: 'onsite',
+                location: { ar: 'الورشة الميكانيكية المركزية (ميكانيكا المخارط)', en: 'Central Mechanical Workshop (Lathe Mechanics)', ur: 'مرکزی مکینیکل ورکشاپ' },
+                maxCapacity: 20,
+                desc: { ar: 'التدريب العملي على ميكانيكا المخارط، معايرة الأدوات، وتشغيل مكائن القطع والحفر بالحاسوب (حضوري).', en: 'Practical training on lathe mechanics, tool calibration, and machining (On-site).', ur: 'خراد مشینمیکنکس پر عملی تربیت۔' }
+            },
+            {
+                id: 'c4',
+                image: 'https://images.unsplash.com/photo-1509391365360-809297f97521?auto=format&fit=crop&w=600&q=80',
+                title: { ar: 'تصميم وصيانة أنظمة الطاقة الشمسية', en: 'Solar Energy Systems Design & Maintenance', ur: 'شمسی توانائی کے سسٹمز کا ڈیزائن' },
+                trainer: { ar: 'م. عادل الشمري', en: 'Eng. Adel Al-Shammari', ur: 'انجینئر عادل الشمری' },
+                duration: { ar: '3 أيام (18 ساعة)', en: '3 Days (18 hrs)', ur: '3 دن (18 گھنٹے)' },
+                date: { ar: '15 - 18 أبريل 2026', en: 'Apr 15 - 18, 2026', ur: '15 - 18 اپریل 2026' },
+                attendanceType: 'remote',
+                location: { ar: 'القاعة الافتراضية الذكية (عن بعد)', en: 'Smart Virtual Hall (Online)', ur: 'سمارٹ ورچوئل ہال (آن لائن)' },
+                maxCapacity: 20,
+                desc: { ar: 'أسس حساب الأحمال، اختيار الألواح والعاكسات، وربط أنظمة الطاقة الشمسية الكهروضوئية (عن بعد).', en: 'Basics of load calculation and PV solar systems (Remote).', ur: 'شمسی توانائی کے سسٹمز کی بنیادی باتیں اور ڈیزائن۔' }
+            },
+            {
+                id: 'c5',
+                image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+                title: { ar: 'إدارة السلامة والصحة المهنية (OSHA)', en: 'Occupational Safety & Health (OSHA)', ur: 'پیشہ ورانہ حفاظت اور صحت (OSHA)' },
+                trainer: { ar: 'أ. نايف الدوسري', en: 'Mr. Naif Al-Dosari', ur: 'مسٹر نایف الدوسری' },
+                duration: { ar: '2 أيام (10 ساعات)', en: '2 Days (10 hrs)', ur: '2 دن (10 گھنٹے)' },
+                date: { ar: '22 - 24 أبريل 2026', en: 'Apr 22 - 24, 2026', ur: '22 - 24 اپریل 2026' },
+                attendanceType: 'onsite',
+                location: { ar: 'قاعة المؤتمرات الرئيسية - مبنى الإدارة', en: 'Main Conference Hall - Admin Building', ur: 'مین کانفرنس ہال' },
+                maxCapacity: 20,
+                desc: { ar: 'تطبيق اشتراطات الأمان في بيئة العمل، تحليل المخاطر، وإعداد خطط الاستجابة للطوارئ (حضوري).', en: 'Applying workplace safety requirements and emergency response plans (On-site).', ur: 'کام کی جگہ پر حفاظت کے تقاضے۔' }
+            }
+        ];
+
         let registrations = [];
         let evaluations = [];
         let impactAssessments = [];
@@ -1576,7 +1639,6 @@
             document.getElementById('txt-stat-full-label').innerText = t.fullCourses;
             document.getElementById('txt-stat-satisfaction-label').innerText = t.avgSatisfaction;
             document.getElementById('txt-stat-certs-label').innerText = t.certsLabel;
-            document.getElementById('txt-stat-multi-label').innerText = t.multiTraineesLabel;
             document.getElementById('txt-multi-modal-title').innerText = t.multiModalTitle;
             document.getElementById('txt-multi-modal-subtitle').innerText = t.multiModalSub;
             document.getElementById('th-multi-name').innerText = t.thMultiName;
@@ -1794,9 +1856,24 @@
                 image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80'
             };
 
+            courses.push({
+                id: newCoursePayload.id,
+                image: newCoursePayload.image,
+                title: { ar: titleAr, en: titleEn, ur: titleAr },
+                trainer: { ar: trainer, en: trainer, ur: trainer },
+                duration: { ar: duration, en: duration, ur: duration },
+                date: { ar: date, en: date, ur: date },
+                attendanceType: attendanceType,
+                location: { ar: newCoursePayload.location_ar, en: newCoursePayload.location_en, ur: newCoursePayload.location_ar },
+                maxCapacity: 20,
+                desc: { ar: desc, en: desc, ur: desc }
+            });
+
             await sendToGoogleSheet('addCourse', newCoursePayload);
             closeAdminManagerModal();
-            fetchBackendData();
+            renderCourses();
+            updateDashboardStats();
+            populateFilterDropdowns();
             showToast(currentLang === 'ar' ? 'تمت إضافة الدورة التدريبية بنجاح وحفظها في قوقل شيت' : 'New course added and saved to Google Sheets', 'success');
         }
 
@@ -1894,7 +1971,7 @@
             const q = query.toLowerCase();
             if (q.includes('قوقل شيت') || q.includes('sheet') || q.includes('apps script') || q.includes('database')) {
                 return currentLang === 'ar' 
-                    ? '🤖✨ جميع البيانات مرتبطة بقاعدة بيانات Google Sheets بشكل كامل عبر Google Apps Script!' 
+                    ? '🤖✨ جميع البيانات مرتبطة بقاعدة بيانات Google Sheets بشكل کامل عبر Google Apps Script!' 
                     : '🤖✨ All data is fully synced with Google Sheets via Google Apps Script!';
             } else if (q.includes('أثر') || q.includes('3 شهور') || q.includes('impact') || q.includes('manager')) {
                 return currentLang === 'ar' 
@@ -2061,7 +2138,8 @@
             await sendToGoogleSheet('register', newReg);
 
             closeRegistrationModal();
-            fetchBackendData();
+            renderCourses();
+            updateDashboardStats();
             showToast(currentLang === 'ar' ? 'تم تسجيل المتدرب بنجاح وحفظه في Google Sheets' : 'Trainee registered successfully and saved to Google Sheets', 'success');
         }
 
